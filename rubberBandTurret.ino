@@ -6,8 +6,8 @@ Servo fireServo; // create object for firing servo
 const int buttonPin = 2; // the number of the pushbutton pin
 const int firePin = 13; // the number of the fire LED
 const int standbyPin = 12; // the number of the turret LED
-const int aimServoPin = 9; // big servo pin
-const int fireServoPin = 10; // little servo pin
+const int aimServoPin = 9; // aiming servo pin
+const int fireServoPin = 10; // firing servo pin
 const int potPin = A0; // select the input pin for the potentiometer
 
 int ledState = HIGH; // the current state of the output pin
@@ -29,8 +29,8 @@ void setup() {
   aimServo.attach(aimServoPin);  // attaches the servo on pin 9 to the servo object
   fireServo.attach(fireServoPin);  // attaches the servo on pin 10 to the servo object
   
-  aimServo.write(0); // set big servo to zero position
-  fireServo.write(0); // set little servo to zero position
+  aimServo.write(0); // set aim servo to zero position
+  fireServo.write(0); // set fire servo to zero position
   
   digitalWrite(standbyPin, HIGH); // turn on standby pin
 }

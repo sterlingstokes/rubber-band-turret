@@ -1,13 +1,13 @@
 #include <Servo.h> 
  
-Servo bigServo;  // create object for big servo
-Servo littleServo; // create object for little servo
+Servo aimServo;  // create object for aiming servo
+Servo fireServo; // create object for firing servo
 
 const int buttonPin = 2; // the number of the pushbutton pin
 const int firePin = 13; // the number of the fire LED
 const int standbyPin = 12; // the number of the turret LED
-const int bigServoPin = 9; // big servo pin 
-const int littleServoPin = 10; // little servo pin
+const int aimServoPin = 9; // big servo pin
+const int fireServoPin = 10; // little servo pin
 const int potPin = A0; // select the input pin for the potentiometer
 
 int ledState = HIGH; // the current state of the output pin
@@ -26,11 +26,11 @@ void setup() {
   pinMode(standbyPin, OUTPUT); // setup standby pin as output
 
   // set initial LED state
-  bigServo.attach(bigServoPin);  // attaches the servo on pin 9 to the servo object
-  littleServo.attach(littleServoPin);  // attaches the servo on pin 10 to the servo object
+  aimServo.attach(aimServoPin);  // attaches the servo on pin 9 to the servo object
+  fireServo.attach(fireServoPin);  // attaches the servo on pin 10 to the servo object
   
-  bigServo.write(0); // set big servo to zero position
-  littleServo.write(0); // set little servo to zero position
+  aimServo.write(0); // set big servo to zero position
+  fireServo.write(0); // set little servo to zero position
   
   digitalWrite(standbyPin, HIGH); // turn on standby pin
 }
@@ -41,9 +41,9 @@ void fire()
   digitalWrite(standbyPin, LOW); // turn off standby LED
   digitalWrite(firePin, HIGH); // turn on fire LED
   
-  littleServo.write(10); // move littleServo to 10 degrees to release rubber band, set this to whatever works best for yours
+  fireServo.write(10); // move fireServo to 10 degrees to release rubber band, set this to whatever works best for yours
   delay(100); // delay so servo can catch up
-  littleServo.write(0);
+  fireServo.write(0);
   delay(15); // delay so servo can catch up
   
   digitalWrite(firePin, LOW); // turn off fire LED
@@ -53,7 +53,7 @@ void fire()
 void loop() {
   val = analogRead(potPin); // reads the value of the potentiometer (value between 0 and 1023) 
   val = map(val, 0, 1023, 0, 179); // scale it to use it with the servo (value between 0 and 180)
-  bigServo.write(val); // sets the servo position according to the scaled value
+  aimServo.write(val); // sets the servo position according to the scaled value
   delay(15); // waits for the servo to get there
   
   // read the state of the switch into a local variable:

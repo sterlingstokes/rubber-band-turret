@@ -41,7 +41,7 @@ void fire()
   digitalWrite(standbyPin, LOW); // turn off standby LED
   digitalWrite(firePin, HIGH); // turn on fire LED
   
-  littleServo.write(10); // move littleServo to 20 degrees to release rubber band
+  littleServo.write(10); // move littleServo to 10 degrees to release rubber band, set this to whatever works best for yours
   delay(100); // delay so servo can catch up
   littleServo.write(0);
   delay(15); // delay so servo can catch up

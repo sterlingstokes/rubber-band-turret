@@ -5,7 +5,7 @@ Servo fireServo; // create object for firing servo
 
 const int buttonPin = 2; // the number of the pushbutton pin
 const int firePin = 13; // the number of the fire LED
-const int standbyPin = 12; // the number of the turret LED
+const int standbyPin = 12; // the number of the standby LED
 const int aimServoPin = 9; // aiming servo pin
 const int fireServoPin = 10; // firing servo pin
 const int potPin = A0; // select the input pin for the potentiometer
